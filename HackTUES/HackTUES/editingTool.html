@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Art & Creativity">
+		<meta name="keywords" content="HTML,CSS,JavaScript">
+		<meta name="author" content="Patrik Mihailov;Ivan Dimitrov; Yanica Georgieva">
+		<title>Image Editor</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<style>
+		#pic {
+			float:left;
+			margin-left:400px;
+			margin-top:115px;
+			font-family: italic;
+		}
+    .footer {
+      clear:both;
+      text-align: center;
+      font-family: verdana;
+      color:#2f2f2f;
+			margin-top:155px;
+    }
+    body {
+      background-image:url(http://imageshack.com/a/img923/733/vZA8pY.png);
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-attachment:fixed;
+    }
+    </style>
+		<script>
+			$(document).ready(function(){
+				var c = document.getElementById("ppp");
+				var ctx = c.getContext("2d");
+				var img = document.getElementById("wp");
+				$("button").click(function(){
+					var ImgSrc = $("#lol").val();
+					var img = new Image();
+					img.onload = function() {
+						if(document.getElementById('pop').checked) {
+							var canvas = document.getElementById('ppp')
+								canvas.width = 1290;
+								canvas.height = 730;
+						ctx.drawImage(img, 10,10,1280,720);
+
+						}
+						else if(document.getElementById('pop1').checked) {
+							var canvas = document.getElementById('ppp')
+								canvas.width = 730;
+								canvas.height = 1290;
+							ctx.drawImage(img, 10,10,720,1280);
+						}
+						else if(document.getElementById('pop2').checked){
+							var canvas = document.getElementById('ppp')
+								canvas.width = 510;
+								canvas.height = 510;
+							ctx.drawImage(img, 10,10,500,500);
+						}
+					};
+					img.src = ImgSrc;
+    		});
+		});
+		</script>
+	</head>
+	<body>
+		<img id="wp" width="0" height="0" src="ImgSrc" alt="Uploaded Image" style="visibility:hidden">
+		<canvas id="ppp" width="" height="" style="margin:auto;display:block"></canvas>
+		<div id="pic">
+			<input style="font-family: italic" id="lol" placeholder="Enter Image URL"></input>
+			<input id="pop" type="radio" name="mode" value="Landscape">Landscape</input>
+		  <input id="pop1" type="radio" name="mode" value="Portrait">Portrait</input>
+		  <input id="pop2" type="radio" name="mode" value="Square">Square</input>
+			<button type="button">Go</button>
+		</div>
+	  <div class="footer">
+	  	<footer>*Please enter the IMAGE URL address (not the website or google address)!*</footer>
+	  </div>
+	</body>
+</html>
